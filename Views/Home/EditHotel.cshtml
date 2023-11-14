@@ -1,0 +1,65 @@
+﻿@model Hotels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container" dir="rtl">
+    <div class="alert alert-success">تعديل بيانات الفندق</div>
+    <form asp-controller="Home" asp-action="UpdateRecord" method="post">
+        <input type="hidden" asp-for="@Model.HotelID"/>
+        <div class="row">
+            <div class="col">
+                <label for="HotelName" class="p-2">
+                    اسم الفندق
+                </label>
+                <input type="text" id="HotelName" name="HotelName" class="form-control form-control-sm" asp-for="@Model.HotelName" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-6">
+                <label for="HotelAddress" class="p-2">
+                    عنوان الفندق
+                </label>
+                <input type="text" id="HotelAddress" name="HotelAddress" class="form-control form-control-sm" asp-for="@Model.HotelAddress" required />
+            </div>
+            <div class="col col-sm-6">
+                <label for="HotelCity" class="p-2">
+                    المدينة
+                </label>
+                <input type="text" id="HotelCity" name="HotelCity" class="form-control form-control-sm" asp-for="@Model.HotelCity" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-6">
+                <label for="HotelEmail" class="p-2">
+                    الايميل
+                </label>
+                <input type="email" id="HotelEmail" name="HotelEmail" class="form-control form-control-sm" asp-for="@Model.HotelEmail" required />
+            </div>
+            <div class="col col-sm-6">
+                <label for="HotelPhone" class="p-2">
+                    الهاتف
+                </label>
+                <input type="tel" id="HotelPhone" name="HotelPhone" class="form-control form-control-sm" asp-for="@Model.HotelPhone" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="HotelImage" class="p-2">
+                    صورة الفندق
+                </label>
+                <input type="text" id="HotelImage" name="HotelImage" class="form-control form-control-sm" asp-for="@Model.HotelImage" required />
+            </div>
+
+        </div>
+        <div class="row m-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">حفظ</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

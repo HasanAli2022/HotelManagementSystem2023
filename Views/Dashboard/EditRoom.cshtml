@@ -1,0 +1,58 @@
+﻿@model Rooms
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container" dir="rtl">
+    <div class="alert alert-success">تعديل بيانات الغرفة</div>
+    <form asp-controller="Dashboard" asp-action="UpdateRoom" method="post">
+        <input type="hidden" asp-for="@Model.RoomID" />
+        <div class="row">
+            <div class="col">
+                <label for="RoomHotelID" class="p-2">
+                     الفندق
+                </label>
+                <input type="text" id="RoomHotelID" name="RoomHotelID" class="form-control form-control-sm" asp-asp-for="@Model.RoomHotelID" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-4">
+                <label for="RoomNo" class="p-2">
+                    رقم الغرفة
+                </label>
+                <input type="text" id="RoomNo" name="RoomNo" class="form-control form-control-sm" asp-asp-for="@Model.RoomNo" required />
+            </div>
+            <div class="col col-sm-4">
+                <label for="RoomType" class="p-2">
+                    نوع الغرفة
+                </label>
+                <input type="text" id="RoomType" name="RoomType" class="form-control form-control-sm" asp-asp-for="@Model.RoomType" required />
+            </div>
+            <div class="col col-sm-4">
+                <label for="RoomPrice" class="p-2">
+                    سعر الغرفة
+                </label>
+                <input type="text" id="RoomPrice" name="RoomPrice" class="form-control form-control-sm" asp-asp-for="@Model.RoomPrice" required />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <label for="RoomImage" class="p-2">
+                    صورة الغرفة
+                </label>
+                <input type="text" id="RoomImage" name="RoomImage" class="form-control form-control-sm" asp-asp-for="@Model.RoomImage" required />
+            </div>
+
+        </div>
+        <div class="row m-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">تحديث</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
