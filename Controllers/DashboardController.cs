@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using HotelManagementSystem.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace HotelManagementSystem.Controllers
 {
@@ -13,6 +15,35 @@ namespace HotelManagementSystem.Controllers
         public DashboardController(AppDbContext context)
         {
 			_context = context;
+		}
+
+        /*kmmlzqdcdtbvbkio*/
+        public async Task<string> SendEMail()
+		{
+			var message = new MimeMessage();
+			message.From.Add(new MailboxAddress("Test Message", "hasan14192010@gmail.com"));
+			message.To.Add(MailboxAddress.Parse("hasanalbenhasan@gmail.com"));
+			message.Subject="Test email from my project in ASP.Net Core MVC";
+			message.Body = new TextPart("Plain")
+			{
+				Text = "Welcome in my App"
+			};
+
+			using (var client=new SmtpClient())
+			{
+				try
+				{
+					client.Connect("smtp.gmail.com",587);
+					client.Authenticate("hasan14192010@gmail.com", "kmmlzqdcdtbvbkio");
+					await client.SendAsync(message);
+					client.Disconnect(true);
+				}
+				catch (Exception e)
+				{
+					return e.Message.ToString();
+				}
+			}
+			return "ok";
 		}
 
 		[HttpPost]
@@ -49,8 +80,10 @@ namespace HotelManagementSystem.Controllers
             var selectedHotel = _context.Hotels.SingleOrDefault(x => x.HotelID == id);
             return View(selectedHotel);
         }
-		[Authorize]
-        public IActionResult Index()
+
+        
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
 			var currentuser = HttpContext.User.Identity.Name;
 			ViewBag.CurrentUser = currentuser;
