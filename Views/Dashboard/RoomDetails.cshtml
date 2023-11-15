@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Rooms>
+﻿@model IEnumerable<RoomDetails>
 
 
 @{
 
-	ViewData["Title"] = "الصفحة الرئيسية";
+	ViewData["Title"] = "صفحة تفاصيل الغرف";
 	var _messageData = TempData["Deletion"] as string;
 }
 
@@ -75,7 +75,7 @@
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title" style="font-family:Cairo">الفنادق   </span>
+												<span class="menu-title" style="font-family:Cairo">تفاصيل الغرف   </span>
 											</a>
 											<!--end:Menu link-->
 										</div>
@@ -203,35 +203,19 @@
 											</div>
 											<!--end::Filter-->
 
-											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_Product"> إضافة غرفة</button>
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_Product"> إضافة تفاصيل غرفة</button>
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
-										<!--begin::Group actions-->
-										@* <div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
-										<div class="fw-bold me-5">
-										<span class="me-2" data-kt-customer-table-select="selected_count"></span>Selected
-										</div>
-										<button type="button" class="btn btn-danger" data-kt-customer-table-select="delete_selected">Delete Selected</button>
-										</div> *@
-										<!--end::Group actions-->
+										
 									</div>
 									<!--end::Card toolbar-->
 								</div>
 								<!--end::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body pt-0">
-									<h1> مرحباً @ViewBag.Name</h1>
-									<form asp-action="Index" method="post">
-										<select name="city" class="form-control form-control-sm" onchange="this.form.submit()">
-											<option value="0"></option>
-											<option value="الرياض">الرياض</option>
-											<option value="جدة">جدة</option>
-											<option value="الدمام">الدمام</option>
-											<option value="الهفوف">الهفوف</option>
-											<option value="مكة المكرمة">مكة المكرمة</option>
-										</select>
-									</form>
+									<h1> مرحباً @ViewBag.CurrentUser</h1>
+									
 									<!--begin::Table-->
 									<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
 										<!--begin::Table head-->
@@ -241,8 +225,9 @@
 
 												<th class="min-w-125px " style="font-family:cairo">رقم الفندق </th>
 												<th class="min-w-125px " style="font-family:cairo"> رقم الغرفة </th>
-												<th class="min-w-125px " style="font-family:cairo">نوع الغرفة  </th>
-												<th class="min-w-125px " style="font-family:cairo">سعر الغرفة </th>
+												<th class="min-w-125px " style="font-family:cairo">المميزات </th>
+												<th class="min-w-125px " style="font-family:cairo">الطعام  </th>
+												<th class="min-w-125px " style="font-family:cairo">صورة الغرفة  </th>
 
 												<th class="text-center min-w-125px " style="font-family:cairo" colspan="2">إجراء </th>
 
@@ -257,13 +242,13 @@
 												@foreach (var item in Model)
 												{
 													<tr class="text-end">
-														<td>@item.RoomHotelID</td>
-														<td>@item.RoomNo</td>
-														<td>@item.RoomType</td>
-														<td>@item.RoomPrice</td>
-
-														<td><a asp-action="DeleteRoom" asp-route-id="@item.RoomID"><i class="fa fa-trash text-danger"></i></a></td>
-														<td><a asp-action="EditRoom" asp-route-id="@item.RoomID"><i class="fa fa-edit text-success"></i></a></td>
+														<td>@item.RDHotelID</td>
+														<td>@item.RDRoomID</td>
+														<td>@item.RDFeatures</td>
+														<td>@item.RDFood</td>
+														<td>@item.RDImage1</td>
+														<td><a asp-action="DeleteRoomDetails" asp-route-id="@item.RDID"><i class="fa fa-trash text-danger"></i></a></td>
+														<td><a asp-action="EditRoomDetails" asp-route-id="@item.RDID"><i class="fa fa-edit text-success"></i></a></td>
 													</tr>
 												}
 											}
@@ -291,11 +276,11 @@
 									<!--begin::Modal content-->
 									<div class="modal-content">
 										<!--begin::Form-->
-										<form class="form" method="post" id="kt_modal_add_customer_form" asp-action="CreateNewRoom">
+										<form class="form" method="post" id="kt_modal_add_customer_form" asp-action="CreateNewRoomDetails">
 											<!--begin::Modal header-->
 											<div class="modal-header" id="kt_modal_add_customer_header">
 												<!--begin::Modal title-->
-												<h2 class="fw-bold"> إضافة غرفة</h2>
+												<h2 class="fw-bold"> إضافة تفاصيل غرفة</h2>
 												<!--end::Modal title-->
 												<!--begin::Close-->
 
@@ -309,10 +294,10 @@
 
 											<div class="row">
 												<div class="col">
-													<label for="RoomHotelID" class="p-2">
+													<label for="RDHotelID" class="p-2">
 														اختر الفندق
 													</label>
-													<select class="form-control form-control-sm" name="RoomHotelID">
+													<select class="form-control form-control-sm" name="RDHotelID">
 														<option value="0"></option>
 														@foreach (var item in ViewBag.HotelNames)
 														{
@@ -320,34 +305,41 @@
 														}
 													</select>
 												</div>
+												<div class="col">
+													<label for="RDRoomID" class="p-2">
+														اختر الغرفة
+													</label>
+													<select class="form-control form-control-sm" name="RDRoomID">
+														<option value="0"></option>
+														@foreach (var item in ViewBag.RoomNo)
+														{
+															<option value="@item.RoomID">@item.RoomNo</option>
+														}
+													</select>
+												</div>
 											</div>
 											<div class="row">
 												<div class="col col-sm-4">
-													<label for="RoomNo" class="p-2">
-														رقم الغرفة
+													<label for="RDFeatures" class="p-2">
+														الميزات
 													</label>
-													<input type="text" id="RoomNo" name="RoomNo" class="form-control form-control-sm" required />
+													<input type="text" id="RDFeatures" name="RDFeatures" class="form-control form-control-sm" required />
 												</div>
 												<div class="col col-sm-4">
-													<label for="RoomType" class="p-2">
-														نوع الغرفة
+													<label for="RDFood" class="p-2">
+														الطعام
 													</label>
-													<input type="text" id="RoomType" name="RoomType" class="form-control form-control-sm" required />
+													<input type="text" id="RDFood" name="RDFood" class="form-control form-control-sm" required />
 												</div>
-												<div class="col col-sm-4">
-													<label for="RoomPrice" class="p-2">
-														سعر الغرفة
-													</label>
-													<input type="text" id="RoomPrice" name="RoomPrice" class="form-control form-control-sm" required />
-												</div>
+												
 											</div>
 
 											<div class="row">
 												<div class="col">
-													<label for="RoomImage" class="p-2">
-														صورة الغرفة
+													<label for="RDImage1" class="p-2">
+														صورة الغرفة 1
 													</label>
-													<input type="text" id="RoomImage" name="RoomImage" class="form-control form-control-sm" required />
+													<input type="text" id="RDImage1" name="RDImage1" class="form-control form-control-sm" required />
 												</div>
 
 											</div>

@@ -52,6 +52,15 @@ namespace HotelManagementSystem.Controllers
 		[Authorize]
         public IActionResult Index()
         {
+			var currentuser = HttpContext.User.Identity.Name;
+			ViewBag.CurrentUser = currentuser;
+
+			/*CookieOptions option = new CookieOptions();
+			option.Expires = DateTime.Now.AddMinutes(20);
+			Response.Cookies.Append("Username", currentuser,option);*/
+			HttpContext.Session.SetString("Username", currentuser);
+
+
 			var Hotel = _context.Hotels.ToList();
 			return View(Hotel);
 		}
@@ -64,6 +73,9 @@ namespace HotelManagementSystem.Controllers
 
 		public IActionResult Rooms()
 		{
+			/*ViewBag.CurrentUser = Request.Cookies["Username"];*/
+			ViewBag.currentuser = HttpContext.Session.GetString("Username");
+
 			var HotelNames = _context.Hotels.ToList();
 			ViewBag.HotelNames = HotelNames;
 			var rooms = _context.Rooms.ToList();
@@ -107,5 +119,59 @@ namespace HotelManagementSystem.Controllers
             var selectedRoom = _context.Rooms.SingleOrDefault(x => x.RoomID == id);
             return View(selectedRoom);
         }
-    }
+
+		public IActionResult RoomDetails()
+		{
+            /*ViewBag.CurrentUser = Request.Cookies["Username"];*/
+
+            ViewBag.currentuser = HttpContext.Session.GetString("Username");
+
+			var HotelNames = _context.Hotels.ToList();
+			ViewBag.HotelNames = HotelNames;
+			var rooms = _context.Rooms.ToList();
+			ViewBag.RoomNo = rooms;
+			var rd = _context.RoomDetails.ToList();
+			return View(rd);
+		}
+
+		[HttpPost]
+		public IActionResult CreateNewRoomDetails(RoomDetails rd)
+		{
+			_context.RoomDetails.Add(rd);
+			_context.SaveChanges();
+			return RedirectToAction("RoomDetails");
+		}
+
+		public IActionResult DeleteRoomDetails(int id)
+		{
+			var deletedRoomDetails = _context.RoomDetails.SingleOrDefault(x => x.RDID.Equals(id));
+			if (deletedRoomDetails != null)
+			{
+				_context.RoomDetails.Remove(deletedRoomDetails);
+				_context.SaveChanges();
+				TempData["Deletion"] = "Ok";
+			}
+
+			return RedirectToAction("RoomDetails");
+		}
+
+		[HttpPost]
+		public IActionResult UpdateRoomDetails(RoomDetails rd)
+		{
+			_context.RoomDetails.Update(rd);
+			_context.SaveChanges();
+			return RedirectToAction("RoomDetails");
+		}
+
+		public IActionResult EditRoomDetails(int id)
+		{
+			var HotelNames = _context.Hotels.ToList();
+			ViewBag.HotelNames = HotelNames;
+			var rooms = _context.Rooms.ToList();
+			ViewBag.RoomNo = rooms;
+
+			var selectedRoomdetails = _context.RoomDetails.SingleOrDefault(x => x.RDID == id);
+			return View(selectedRoomdetails);
+		}
+	}
 }

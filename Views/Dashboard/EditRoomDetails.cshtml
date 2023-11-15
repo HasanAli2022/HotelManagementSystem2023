@@ -1,0 +1,59 @@
+﻿@model RoomDetails
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container" dir="rtl">
+    <div class="alert alert-success">تعديل بيانات تفاصيل الغرفة</div>
+    <form asp-controller="Dashboard" asp-action="UpdateRoomDetails" method="post">
+        <input type="hidden" asp-for="@Model.RDID" />
+        <div class="row">
+            <div class="col">
+                <label for="RDHotelID" class="p-2">
+                    الفندق
+                </label>
+                <input type="text" id="RDHotelID" name="RDHotelID" class="form-control form-control-sm" asp-asp-for="@Model.RDHotelID" required />
+            </div>
+            <div class="col col-sm-4">
+                <label for="RDRoomID" class="p-2">
+                    رقم الغرفة
+                </label>
+                <input type="text" id="RDRoomID" name="RDRoomID" class="form-control form-control-sm" asp-asp-for="@Model.RDRoomID" required />
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col col-sm-4">
+                <label for="RDFeatures" class="p-2">
+                    الميزات
+                </label>
+                <input type="text" id="RDFeatures" name="RDFeatures" class="form-control form-control-sm" asp-asp-for="@Model.RDFeatures" required />
+            </div>
+            <div class="col col-sm-4">
+                <label for="RDFood" class="p-2">
+                    الطعام
+                </label>
+                <input type="text" id="RDFood" name="RDFood" class="form-control form-control-sm" asp-asp-for="@Model.RDFood" required />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="RDImage1" class="p-2">
+                   1 صورة الغرفة
+                </label>
+                <input type="text" id="RDImage1" name="RDImage1" class="form-control form-control-sm" asp-asp-for="@Model.RDImage1" required />
+            </div>
+
+        </div>
+        <div class="row m-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">تحديث</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

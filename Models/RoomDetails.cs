@@ -9,12 +9,12 @@ namespace HotelManagementSystem.Models
         [Required]
         [StringLength(50)]
         public string RDImage1 { get; set; }
-        [Required]
+        
         [StringLength(50)]
-        public string RDImage2 { get; set; }
-        [Required]
+        public string? RDImage2 { get; set; }
+        
         [StringLength(50)]
-        public string RDImage3 { get; set; }
+        public string? RDImage3 { get; set; }
         
         public string? RDFood { get; set; }
         [Required]

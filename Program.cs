@@ -24,6 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<HotelManagementSystemUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<HotelManagementSystemUserContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
 var app = builder.Build();
 
 
@@ -36,8 +37,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 
 app.UseRouting();
 app.UseAuthentication();
