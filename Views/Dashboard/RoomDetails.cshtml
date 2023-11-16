@@ -297,7 +297,7 @@
 													<label for="RDHotelID" class="p-2">
 														اختر الفندق
 													</label>
-													<select class="form-control form-control-sm" name="RDHotelID">
+													<select class="form-control form-control-sm" name="RDHotelID" onchange="this.form.submit()">
 														<option value="0"></option>
 														@foreach (var item in ViewBag.HotelNames)
 														{

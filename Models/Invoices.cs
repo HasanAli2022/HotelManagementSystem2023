@@ -15,17 +15,17 @@ namespace HotelManagementSystem.Models
         [Required]
         public DateTime InvoiceDate { get; set; }
         [Required]
-        public decimal InvoicePrice { get; set; }
+        public Decimal InvoicePrice { get; set; }
         [Required]
         public int InvoiceUserID { get; set; }
         [Required]
-        public decimal InvoiceTax { get; set; }
+        public Decimal InvoiceTax { get; set; }
         [Required]
-        public decimal InvoiceTotal { get; set; }
+        public Decimal InvoiceTotal { get; set; }
         [Required]
-        public decimal InvoiceDiscount { get; set; }
+        public Decimal InvoiceDiscount { get; set; }
         [Required]
-        public decimal InvoiceNetPrice { get; set; }
+        public Decimal InvoiceNetPrice { get; set; }
         [Required]
         public DateTime InvoiceDateFrom { get; set; }
         [Required]

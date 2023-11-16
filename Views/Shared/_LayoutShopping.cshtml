@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+	<base href="" />
+	<title>نظام الفندقة المركزي</title>
+	<meta charset="utf-8" />
+	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+	<link rel="stylesheet" type="text/css" href="~/css/custom.css">
+
+	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/634/634394.png?w=740&t=st=1691009018~exp=1691009618~hmac=37c2afc6d1411a956f80ab79897617cc926d1dbf5748a08ec14df8377911311d" />
+	<!--begin:<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />:Fonts-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+	<!--end::Fonts-->
+	<!--begin::Global Stylesheets Bundle(used by all pages)-->
+	<link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<!--end::Global Stylesheets Bundle-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <link href="~/css/header.css" rel="stylesheet" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <!--
+    Front-End Design
+    Ui Design
+    Website: www.cupcom.com.br
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+    <!-- Navbar -->
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <nav class="navbar navbar-expand-xl navbar-light">
+                        <div class="container-fluid">
+                            <a href="#" class="navbar-brand"><img src="/images/markuptag-white-logo.png" alt="logo" class="img-fluid" /></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Beer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Wine</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Liquor
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="#">Cider</a></li>
+                                            <li><a class="dropdown-item" href="#">Mead</a></li>
+                                            <li><a class="dropdown-item" href="#">Others</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="col-lg-4 col-md-3">
+                    <div class="header-search mt-2">
+                        <div class="search-form">
+                            <form method="get">
+                                <div class="input-group">
+                                    <div class="select-style">
+                                        <select name="order">
+                                            <option class="topshow" value="1">All</option>
+                                            <option value="a">Beer</option>
+                                            <option value="b">Wine</option>
+                                            <option value="c">Liquor</option>
+                                            <option value="d">Cider</option>
+                                            <option value="e">Mead</option>
+                                            <option value="f">Others</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" name="search" id="search" class="form-control" placeholder="Search Here" />
+                                    <div class="input-group-addon">
+                                        <button type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 cart-login">
+                    <div class="float-end cart mt-2">
+                        <a href="#">
+                            <span class="number">10</span>
+                            <img class="img-fluid" src="/images/cart.png" alt="cart" />
+                            <span>Cart</span>
+                        </a>
+                    </div>
+
+                    <div class="float-end">
+                        <button type="button" class="btn btn-light mt-2 btn-sm">Login</button>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-sm-2 mt-lg-0">
+                    <div class="store-location p-0 text-end">
+                        <div class="form-check-inline">
+                            <input type="radio" id="test1" name="radio-group" data-toggle="modal" data-target=".bd-example-modal-lg" />
+                            <label for="test1">Choose a Store</label>
+                        </div>
+
+                        <div class="form-check-inline">
+                            <img class="img-fluid" src="/images/or.png" alt="Esplanda" width="20" />
+                        </div>
+
+                        <div class="form-check-inline">
+                            <input type="radio" id="test2" name="radio-group" data-toggle="modal" data-target=".bd-example-modal-lg1" />
+                            <label for="test2">Show Local Availblity</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div style="display: block; margin: 0 auto; text-align: center; margin-top: 50px">
+        <script src="https://apis.google.com/js/platform.js"></script>
+
+        <div class="g-ytsubscribe" data-channelid="UCpXTlrDWlpN46PKieJ-FcPw" data-layout="full" data-count="hidden"></div>
+    </div>
+
+    <div style="margin: 50px 0; display: flex; align-items: center; justify-content: center; width: 100%">
+
+        <a style="display: block; text-align:  center; color: #555; text-decoration: none; margin-right: 15px; " href="https://www.cupcom.com.br/" target="_blank"><i class="fas fa-home" style="color: #1da1f2; margin-right: 5px;"></i>More compoments: cupcom.com.br</a>
+
+    </div>
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2023 - شريط التنقل - <a asp-area="" asp-controller="Home" asp-action="Privacy">الخصوصية</a>
+		</div>
+	</footer>
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

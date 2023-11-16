@@ -166,6 +166,20 @@ namespace HotelManagementSystem.Controllers
 			var rd = _context.RoomDetails.ToList();
 			return View(rd);
 		}
+		[HttpPost]
+		public IActionResult RoomDetails(int HotelId)
+		{
+			/*ViewBag.CurrentUser = Request.Cookies["Username"];*/
+
+			ViewBag.currentuser = HttpContext.Session.GetString("Username");
+
+			var HotelNames = _context.Hotels.ToList();
+			ViewBag.HotelNames = HotelNames;
+			var rooms = _context.Rooms.SingleOrDefault(x=>x.RoomHotelID.Equals(HotelId));
+			ViewBag.RoomNo = rooms;
+			var rd = _context.RoomDetails.ToList();
+			return View(rd);
+		}
 
 		[HttpPost]
 		public IActionResult CreateNewRoomDetails(RoomDetails rd)

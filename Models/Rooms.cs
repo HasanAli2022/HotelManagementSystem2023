@@ -10,7 +10,7 @@ namespace HotelManagementSystem.Models
         [StringLength(50)]
         public string RoomType { get; set; }
         [Required]
-        public float RoomPrice { get; set; }
+        public Decimal RoomPrice { get; set; }
         [Required]
         public string RoomImage { get; set; }
         public string? RoomNo { get; set; }
