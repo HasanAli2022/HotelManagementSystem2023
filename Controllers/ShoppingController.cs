@@ -36,9 +36,10 @@ namespace HotelManagementSystem.Controllers
                 InvoicePrice = rooms.RoomPrice,
 
                 InvoiceTotal = rooms.RoomPrice * 1,
+
                 InvoiceDiscount = 0,
-                InvoiceTax = 15/100,
-                InvoiceNetPrice = tax * rooms.RoomPrice * 1,
+                InvoiceTax = (decimal) 0.15 * rooms.RoomPrice /*( rooms.RoomPrice * tax )*/ ,
+                InvoiceNetPrice = (decimal)(1.15 ) * rooms.RoomPrice * 1 ,
                 InvoiceDateFrom = DateTime.Now.Date,
                 InvoiceDate = DateTime.Now.Date,
                 InvoiceDateTo = DateTime.Now.AddDays(1),
